@@ -1,14 +1,11 @@
 package com.example.multi_tasker_app
 
 import android.content.Intent
-import android.content.Intent.ACTION_VIEW
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.android.material.snackbar.Snackbar
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,12 +18,14 @@ class MainActivity : AppCompatActivity() {
         val register = findViewById<Button>(R.id.btn_register)
 
         register.setOnClickListener {
-            if (username.text.toString().equals("viviene") && password.text.toString().equals("viviene")) {
-                val intent = Intent(this, HomeActivity::class.java).apply{
-
+            if ((username.text.toString().equals("viviene") && password.text.toString().equals("viviene"))) {
+                val intent = Intent(this, MainActivity2::class.java).apply {
+                    val toast = Toast.makeText(applicationContext,"Successful login.", Toast.LENGTH_SHORT)
+                    toast.show()
                 }
+                startActivity(intent)
             } else {
-                val toast = Toast.makeText(applicationContext,"Error.", Toast.LENGTH_SHORT)
+                val toast = Toast.makeText(applicationContext,"Error, try again.", Toast.LENGTH_SHORT)
                 toast.show()
             }
         }
